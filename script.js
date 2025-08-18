@@ -21,7 +21,9 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 function displayLibraryBooks() {
-  myLibrary.forEach((book) => console.log(book.info()));
+  myLibrary.forEach((book, index) =>
+    console.log(`${index + 1}. ${book.info()}`)
+  );
 }
 
 addBookToLibrary("The Hobbit", "J.J.R. Tolkien", 295, false);
