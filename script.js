@@ -19,3 +19,12 @@ function Book(title, author, pages, isRead) {
 function addBookToLibrary(title, author, pages, isRead) {
   myLibrary.push(new Book(title, author, pages, isRead));
 }
+
+function displayLibraryBooks() {
+  myLibrary.forEach((book) => console.log(book.info()));
+}
+
+addBookToLibrary("The Hobbit", "J.J.R. Tolkien", 295, false);
+addBookToLibrary("War and Peace", "Leo Tolstoy", 1225, true);
+
+displayLibraryBooks();
