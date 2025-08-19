@@ -4,7 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="script.js" defer></script>
-    <title>Document</title>
+    <title>Odin Library</title>
   </head>
-  <body></body>
+  <body>
+    <dialog id="dialog">
+      <form method="dialog">
+        <p>
+          <label for="title"> Book title: </label>
+          <input type="text" id="title" name="title" required />
+        </p>
+        <p>
+          <label for="author"> Book author: </label>
+          <input type="text" id="author" name="author" required />
+        </p>
+        <p>
+          <label for="pages"> Pages: </label>
+          <input type="number" id="pages" name="pages" required />
+        </p>
+        <p>
+          <label for="is-read"> Is it read?: </label>
+          <input type="checkbox" id="is-read" name="is-read" required />
+        </p>
+        <div>
+          <input
+            type="submit"
+            id="close-noadd"
+            value="Cancel"
+            formmethod="dialog"
+            formnovalidate
+          />
+          <input type="submit" id="close-add" value="Add the book" />
+        </div>
+      </form>
+    </dialog>
+    <p id="library-content">No books in the library yet!</p>
+    <p>
+      <button id="show-dialog">Add new book!</button>
+    </p>
+  </body>
 </html>

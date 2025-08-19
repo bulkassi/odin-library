@@ -1,3 +1,12 @@
+const showBtn = document.getElementById("show-dialog");
+const dialog = document.getElementById("dialog");
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const pages = document.getElementById("pages");
+const isRead = document.getElementById("is-read");
+const addBookBtn = document.getElementById("close-add");
+const libraryBox = document.getElementById("library-content");
+
 const myLibrary = [];
 
 function Book(title, author, pages, isRead) {
@@ -29,4 +38,6 @@ function displayLibraryBooks() {
 addBookToLibrary("The Hobbit", "J.J.R. Tolkien", 295, false);
 addBookToLibrary("War and Peace", "Leo Tolstoy", 1225, true);
 
-displayLibraryBooks();
+showBtn.addEventListener("click", () => {
+  dialog.showModal();
+});
