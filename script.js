@@ -47,16 +47,16 @@ function removeBookFromLibrary(bookId) {
   return myLibrary.splice(findBookInLibrary(bookId), 1);
 }
 
-/*
+/* Example:
 addBookToLibrary("The Hobbit", "J.J.R. Tolkien", 295, false);
 addBookToLibrary("War and Peace", "Leo Tolstoy", 1225, true);
 */
 
-showBtn.addEventListener("click", () => {
+showBtn.addEventListener("click", function openDialog() {
   dialog.showModal();
 });
 
-dialog.addEventListener("close", () => {
+dialog.addEventListener("close", function handleBookAdd() {
   if (dialog.returnValue === "Add the book") {
     const newBookId = addBookToLibrary(
       title.value,
@@ -98,7 +98,6 @@ dialog.addEventListener("close", () => {
     bookEl.appendChild(removeBtn);
 
     libraryBox.appendChild(bookEl);
-    console.log(myLibrary);
   }
 });
 
@@ -106,7 +105,6 @@ libraryBox.addEventListener("click", function handleRemoveBtnPress(e) {
   if (e.target.className === "book-remove") {
     removeBookFromLibrary(e.target.parentNode.dataset.id);
     libraryBox.removeChild(e.target.parentNode);
-    console.log(myLibrary);
   }
 });
 
@@ -115,6 +113,5 @@ libraryBox.addEventListener("click", function handleCheckboxPress(e) {
     const isReadDiv = e.target.parentNode;
     const bookDiv = isReadDiv.parentNode;
     myLibrary[findBookInLibrary(bookDiv.dataset.id)].isRead = e.target.checked;
-    console.log(myLibrary);
   }
 });
