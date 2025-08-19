@@ -81,11 +81,17 @@ dialog.addEventListener("close", () => {
 
     isReadLabel.textContent = "Is read?";
 
+    /* Add the remove button */
+    const removeBtn = document.createElement("button");
+    removeBtn.classList.add("book-remove");
+    removeBtn.textContent = "Remove";
+
     isReadDiv.appendChild(isReadCheckbox);
     isReadDiv.appendChild(isReadLabel);
 
     bookEl.appendChild(bookInfo);
     bookEl.appendChild(isReadDiv);
+    bookEl.appendChild(removeBtn);
 
     libraryBox.appendChild(bookEl);
     console.log(myLibrary);

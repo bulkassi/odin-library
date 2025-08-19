@@ -21,4 +21,5 @@
 .book-remove {
   display: flex;
   justify-content: right;
+  justify-self: end;
 }
