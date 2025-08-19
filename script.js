@@ -43,6 +43,10 @@ function findBookInLibrary(bookId) {
   return myLibrary.findIndex((book) => book.id === bookId);
 }
 
+function removeBookFromLibrary(bookId) {
+  return myLibrary.splice(findBookInLibrary(bookId), 1);
+}
+
 /*
 addBookToLibrary("The Hobbit", "J.J.R. Tolkien", 295, false);
 addBookToLibrary("War and Peace", "Leo Tolstoy", 1225, true);
@@ -94,6 +98,14 @@ dialog.addEventListener("close", () => {
     bookEl.appendChild(removeBtn);
 
     libraryBox.appendChild(bookEl);
+    console.log(myLibrary);
+  }
+});
+
+libraryBox.addEventListener("click", function handleRemoveBtnPress(e) {
+  if (e.target.className === "book-remove") {
+    removeBookFromLibrary(e.target.parentNode.dataset.id);
+    libraryBox.removeChild(e.target.parentNode);
     console.log(myLibrary);
   }
 });

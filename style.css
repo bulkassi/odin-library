@@ -4,7 +4,7 @@
 
 .book {
   display: grid;
-  grid-template: 1fr 1fr / 150px 150px;
+  grid-template: 1fr / 150px 150px;
 }
 
 .book-info {
