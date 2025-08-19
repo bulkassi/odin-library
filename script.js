@@ -46,9 +46,13 @@ showBtn.addEventListener("click", () => {
 });
 
 dialog.addEventListener("close", () => {
-  console.log(dialog.returnValue);
   if (dialog.returnValue === "Add the book") {
     addBookToLibrary(title.value, author.value, +pages.value, isRead.checked);
     libraryBox.textContent = displayLibraryBooks();
+
+    title.value = "";
+    author.value = "";
+    pages.value = null;
+    isRead.checked = false;
   }
 });
