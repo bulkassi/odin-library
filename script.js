@@ -26,7 +26,9 @@ function Book(title, author, pages, isRead) {
 }
 
 function addBookToLibrary(title, author, pages, isRead) {
-  myLibrary.push(new Book(title, author, pages, isRead));
+  let newBook = new Book(title, author, pages, isRead);
+  myLibrary.push(newBook);
+  return newBook.id;
 }
 
 function displayLibraryBooks() {
@@ -36,10 +38,10 @@ function displayLibraryBooks() {
   }, "");
 }
 
+/*
 addBookToLibrary("The Hobbit", "J.J.R. Tolkien", 295, false);
 addBookToLibrary("War and Peace", "Leo Tolstoy", 1225, true);
-
-libraryBox.textContent = displayLibraryBooks();
+*/
 
 showBtn.addEventListener("click", () => {
   dialog.showModal();
@@ -47,12 +49,18 @@ showBtn.addEventListener("click", () => {
 
 dialog.addEventListener("close", () => {
   if (dialog.returnValue === "Add the book") {
-    addBookToLibrary(title.value, author.value, +pages.value, isRead.checked);
-    libraryBox.textContent = displayLibraryBooks();
+    const newBookId = addBookToLibrary(
+      title.value,
+      author.value,
+      +pages.value,
+      isRead.checked
+    );
 
-    title.value = "";
-    author.value = "";
-    pages.value = null;
-    isRead.checked = false;
+    const bookEl = document.createElement("p");
+    bookEl.textContent = myLibrary[myLibrary.length - 1].info();
+    bookEl.dataset.id = newBookId;
+
+    libraryBox.appendChild(bookEl);
+    console.log(myLibrary);
   }
 });
