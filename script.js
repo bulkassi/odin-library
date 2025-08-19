@@ -30,14 +30,25 @@ function addBookToLibrary(title, author, pages, isRead) {
 }
 
 function displayLibraryBooks() {
-  myLibrary.forEach((book, index) =>
-    console.log(`${index + 1}. ${book.info()}`)
-  );
+  return myLibrary.reduce((output, book, index) => {
+    output += `${index + 1}. ${book.info()}\n`;
+    return output;
+  }, "");
 }
 
 addBookToLibrary("The Hobbit", "J.J.R. Tolkien", 295, false);
 addBookToLibrary("War and Peace", "Leo Tolstoy", 1225, true);
 
+libraryBox.textContent = displayLibraryBooks();
+
 showBtn.addEventListener("click", () => {
   dialog.showModal();
+});
+
+dialog.addEventListener("close", () => {
+  console.log(dialog.returnValue);
+  if (dialog.returnValue === "Add the book") {
+    addBookToLibrary(title.value, author.value, +pages.value, isRead.value);
+    libraryBox.textContent = displayLibraryBooks();
+  }
 });
