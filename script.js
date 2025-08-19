@@ -109,3 +109,12 @@ libraryBox.addEventListener("click", function handleRemoveBtnPress(e) {
     console.log(myLibrary);
   }
 });
+
+libraryBox.addEventListener("click", function handleCheckboxPress(e) {
+  if (e.target.type === "checkbox") {
+    const isReadDiv = e.target.parentNode;
+    const bookDiv = isReadDiv.parentNode;
+    myLibrary[findBookInLibrary(bookDiv.dataset.id)].isRead = e.target.checked;
+    console.log(myLibrary);
+  }
+});
