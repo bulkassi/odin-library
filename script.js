@@ -38,6 +38,11 @@ function displayLibraryBooks() {
   }, "");
 }
 
+/* Return the index of the found book */
+function findBookInLibrary(bookId) {
+  return myLibrary.findIndex((book) => book.id === bookId);
+}
+
 /*
 addBookToLibrary("The Hobbit", "J.J.R. Tolkien", 295, false);
 addBookToLibrary("War and Peace", "Leo Tolstoy", 1225, true);
@@ -56,9 +61,31 @@ dialog.addEventListener("close", () => {
       isRead.checked
     );
 
-    const bookEl = document.createElement("p");
-    bookEl.textContent = myLibrary[myLibrary.length - 1].info();
+    const bookEl = document.createElement("div");
+    bookEl.classList.add("book");
     bookEl.dataset.id = newBookId;
+
+    const bookInfo = document.createElement("p");
+    bookInfo.textContent = myLibrary[myLibrary.length - 1].info();
+    bookInfo.classList.add("book-info");
+
+    /* Add the read checkbox */
+    const isReadDiv = document.createElement("div");
+    const isReadCheckbox = document.createElement("input");
+    const isReadLabel = document.createElement("label");
+
+    isReadDiv.classList.add("book-read");
+
+    isReadCheckbox.type = "checkbox";
+    isReadCheckbox.checked = myLibrary[myLibrary.length - 1].isRead;
+
+    isReadLabel.textContent = "Is read?";
+
+    isReadDiv.appendChild(isReadCheckbox);
+    isReadDiv.appendChild(isReadLabel);
+
+    bookEl.appendChild(bookInfo);
+    bookEl.appendChild(isReadDiv);
 
     libraryBox.appendChild(bookEl);
     console.log(myLibrary);
